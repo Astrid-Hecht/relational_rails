@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Item <%= @item.id%> </title>
+      <link href="../../assets/stylesheets/minimal-table.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+      <h1>Item Info</h1>
+      
+        <% x = 'Paid' %>
+        <% x = 'Free!' if @item.free_shipping %>
+        <table>
+          <tr>
+            <th><h3> <%= @item.name %> </h3></th>
+          </tr>
+          <tr>
+            <td>Rating: <%= @item.rating %> stars</td>
+          </tr>
+          <tr>
+            <td>Price: $<%= @item.price %></td>
+          </tr>
+          <tr>
+            <td>Left in Stock: <%= @item.stock %></td>
+          </tr>
+          <tr>
+            <td>Number Sold: <%= @item.num_sold %></td>
+          </tr>
+          <tr>
+            <td>Shipping: <%= x %></td>
+          </tr>
+        </table>
+        <br><br>
+      
+    </body>
+  </html>
+  

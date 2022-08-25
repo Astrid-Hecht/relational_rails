@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title> <%=@artist.username%> Shop Breakdown </title>
+      <link href="../../assets/stylesheets/minimal-table.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+      <h1><%=@artist.username%> Shop Breakdown</h1>
+        <table>
+          <tr>
+            <th><h3> <%= @artist.username %> </h3></th>
+          </tr>
+          <tr>
+            <td>Location: <%= @artist.location %></td>
+          </tr>
+          <tr>
+            <td>Followers: $<%= @artist.followers %></td>
+          </tr>
+          <tr>
+            <td>Left in Stock: <%= @artist.accepts_returns %></td>
+          </tr>
+        </table>
+        <br><br>
+      
+    </body>
+  </html>
+  
