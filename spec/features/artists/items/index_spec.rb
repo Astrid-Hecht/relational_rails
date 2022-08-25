@@ -29,13 +29,9 @@ RSpec.describe 'Artists items index' do
     expect(page).to have_content(@item_2.free_shipping)
   end
 
-  it 'and nothing from a differesnt artists' do
+  it 'and nothing from a different artist' do
     expect(page).to_not have_content(@artist_1.username)
     expect(page).to_not have_content(@item_1.name)
-    expect(page).to_not have_content(@item_1.rating)
-    expect(page).to_not have_content(@item_1.price)
-    expect(page).to_not have_content(@item_1.stock)
-    expect(page).to_not have_content(@item_1.num_sold)
-    expect(page).to_not have_content(@item_1.free_shipping)
+    expect(page).to_not have_content("Number Sold: #{@item_1.num_sold}")
   end
 end

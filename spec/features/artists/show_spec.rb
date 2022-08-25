@@ -24,11 +24,8 @@ RSpec.describe 'Artists#show' do
 
       it "including the artists's attributes" do
         expect(page).to have_content(@artist_1.location)
-        expect(page).to_not have_content(@artist_2.location)
         expect(page).to have_content(@artist_1.followers)
-        expect(page).to_not have_content(@artist_2.followers)
         expect(page).to have_content(@artist_1.accepts_returns)
-        expect(page).to_not have_content(@artist_2.accepts_returns)
       end
     end
   end
