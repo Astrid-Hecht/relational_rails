@@ -7,9 +7,20 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-  </head>
 
+  </head>
   <body>
-    <%= yield %>
+    <header>
+      <h1> <span id='title' style='margin-right:20px'><span id='b'>b</span>Etsie</span> 
+        <nav id='navbox'>
+          <a class='navigation' href='/artists'>Artists</a>
+          <a class='navigation'href='/items'>Items</a>
+        </nav>
+      </h1>
+    </header>
+
+    <article>
+      <%= yield %>
+    </article>
   </body>
 </html>
