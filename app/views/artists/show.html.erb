@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-  <html>
-    <head>
-      <title> <%=@artist.username%> Shop Breakdown </title>
-      <link href="../../assets/stylesheets/minimal-table.css" rel="stylesheet" type="text/css">
-    </head>
+    
     <body>
       <h1><%=@artist.username%> Shop Breakdown</h1>
         <table id='shop_breakdown'>
@@ -23,8 +18,10 @@
             <td>Return Policy: <%= @artist.accepts_returns %></td>
           </tr>
         </table>
+        <br>
+        <%= link_to "<button>Artist's shop</button>".html_safe, "/artists/#{@artist.id}/items", :id => 'shop_button' %>
         <br><br>
       
     </body>
-  </html>
+
   

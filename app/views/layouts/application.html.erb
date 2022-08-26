@@ -2,14 +2,26 @@
 <html>
   <head>
     <title>RelationalRails</title>
+    <link href="../../assets/stylesheets/minimal-table.css" rel="stylesheet" type="text/css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-  </head>
 
+  </head>
   <body>
-    <%= yield %>
+    <header>
+      <h1> <span id='title' style='margin-right:20px'><span id='b'>b</span>Etsie</span> 
+        <nav id='navbox'>
+          <a class='navigation divider' href='/artists'>Artists</a>
+          <a class='navigation div_2'href='/items' >Items</a>
+        </nav>
+      </h1>
+    </header>
+
+    <article>
+      <%= yield %>
+    </article>
   </body>
 </html>

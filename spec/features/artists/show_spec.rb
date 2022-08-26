@@ -10,9 +10,9 @@ RSpec.describe 'Artists#show' do
     describe 'when I visit "/artist/:id"' do
       before :each do
         @artist_1 = Artist.create!(username: 'UnnecessaryilyResin', location: 'Laramie, Wyoming', followers: 157,
-                                  accepts_returns: false)
+                                   accepts_returns: false)
         @artist_2 = Artist.create!(username: 'PetHats', location: 'San Fransisco, California', followers: 40_378,
-                                  accepts_returns: true)
+                                   accepts_returns: true)
 
         visit "/artists/#{@artist_1.id}"
       end
@@ -28,16 +28,31 @@ RSpec.describe 'Artists#show' do
         expect(page).to have_content(@artist_1.accepts_returns)
       end
 
-      it "I see a count of the number of children associated with this parent" do 
-        @item_1 = @artist_1.items.create!(name: 'Resin Sparkle Beer Cozy', rating: 2.2, 
+      it 'I see a count of the number of children associated with this parent' do
+        @item_1 = @artist_1.items.create!(name: 'Resin Sparkle Beer Cozy', rating: 2.2,
                                           price: 44.95, stock: 100, num_sold: 3, free_shipping: true)
         @item_2 = @artist_2.items.create!(name: 'Boxer Bowler', rating: 5.0,
                                           price: 35.01, stock: 5, num_sold: 59, free_shipping: false)
         visit "/artists/#{@artist_1.id}"
         within '#shop_breakdown' do
-          save_and_open_page
           expect(page.all('.item_count')[0]).to have_content(@artist_1.items.count)
         end
+      end
+
+      it "Then I see a link to take me to that artists's `items` page ('/artists/:id/items')" do
+        @artist_1 = Artist.create!(username: 'UnnecessaryilyResin', location: 'Laramie, Wyoming', followers: 157,
+                                   accepts_returns: false)
+        @artist_2 = Artist.create!(username: 'PetHats', location: 'San Fransisco, California', followers: 40_378,
+                                   accepts_returns: true)
+        @item_1 = Item.create!(name: 'Resin Sparkle Beer Cozy', rating: 2.2, price: 44.95,
+                               stock: 100, num_sold: 3, free_shipping: true, artist_id: @artist_1.id)
+        @item_2 = Item.create!(name: 'Boxer Bowler', rating: 5.0, price: 35.01,
+                               stock: 5, num_sold: 59, free_shipping: false, artist_id: @artist_2.id)
+        visit "/artists/#{@artist_1.id}"
+
+        expect(page).to have_content("Artist's shop")
+        click_link("Artist's shop")
+        expect(current_path).to eq("/artists/#{@artist_1.id}/items")
       end
     end
   end
