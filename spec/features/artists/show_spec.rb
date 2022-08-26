@@ -35,7 +35,6 @@ RSpec.describe 'Artists#show' do
                                           price: 35.01, stock: 5, num_sold: 59, free_shipping: false)
         visit "/artists/#{@artist_1.id}"
         within '#shop_breakdown' do
-          save_and_open_page
           expect(page.all('.item_count')[0]).to have_content(@artist_1.items.count)
         end
       end
