@@ -68,7 +68,7 @@ RSpec.describe 'Header', type: :feature do
               click_link('Artists')
               expect(current_path).to eq('/artists')
             end
-  
+
             visit "/items/#{@item_1.id}"
             within('#navbox') do
               expect(page).to have_content('Artists')
@@ -76,7 +76,7 @@ RSpec.describe 'Header', type: :feature do
               expect(current_path).to eq('/artists')
             end
           end
-  
+
           it 'works on /artists pages' do
             visit '/artists'
             within('#navbox') do
@@ -84,14 +84,14 @@ RSpec.describe 'Header', type: :feature do
               click_link('Artists')
               expect(current_path).to eq('/artists')
             end
-  
+
             visit "/artists/#{@artist_1.id}"
             within('#navbox') do
               expect(page).to have_content('Artists')
               click_link('Artists')
               expect(current_path).to eq('/artists')
             end
-  
+
             visit "/artists/#{@artist_1.id}/items"
             within('#navbox') do
               expect(page).to have_content('Artists')
