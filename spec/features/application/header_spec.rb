@@ -23,40 +23,81 @@ RSpec.describe 'Header', type: :feature do
       describe 'Then I see a link at the top of the page that takes me to the Child Index' do
         it 'works on /items pages' do
           visit '/items'
-          within('#navigation') do
-            expect(page).to_have content('Items')
-            click_link('items')
+          within('#navbox') do
+            expect(page).to have_content('Items')
+            click_link('Items')
             expect(current_path).to eq('/items')
           end
 
           visit "/items/#{@item_1.id}"
-          within('#navigation') do
-            expect(page).to_have content('Items')
-            click_link('items')
+          within('#navbox') do
+            expect(page).to have_content('Items')
+            click_link('Items')
             expect(current_path).to eq('/items')
           end
         end
 
         it 'works on /artists pages' do
           visit '/artists'
-          within('#navigation') do
-            expect(page).to_have content('Items')
-            click_link('items')
+          within('#navbox') do
+            expect(page).to have_content('Items')
+            click_link('Items')
             expect(current_path).to eq('/items')
           end
 
           visit "/artists/#{@artist_1.id}"
-          within('#navigation') do
-            expect(page).to_have content('Items')
-            click_link('items')
+          within('#navbox') do
+            expect(page).to have_content('Items')
+            click_link('Items')
             expect(current_path).to eq('/items')
           end
 
           visit "/artists/#{@artist_1.id}/items"
-          within('#navigation') do
-            expect(page).to_have content('Items')
-            click_link('items')
+          within('#navbox') do
+            expect(page).to have_content('Items')
+            click_link('Items')
             expect(current_path).to eq('/items')
+          end
+        end
+
+        describe 'Then I see a link at the top of the page that takes me to the Artist Index' do
+          it 'works on /items pages' do
+            visit '/items'
+            within('#navbox') do
+              expect(page).to have_content('Artists')
+              click_link('Artists')
+              expect(current_path).to eq('/artists')
+            end
+  
+            visit "/items/#{@item_1.id}"
+            within('#navbox') do
+              expect(page).to have_content('Artists')
+              click_link('Artists')
+              expect(current_path).to eq('/artists')
+            end
+          end
+  
+          it 'works on /artists pages' do
+            visit '/artists'
+            within('#navbox') do
+              expect(page).to have_content('Artists')
+              click_link('Artists')
+              expect(current_path).to eq('/artists')
+            end
+  
+            visit "/artists/#{@artist_1.id}"
+            within('#navbox') do
+              expect(page).to have_content('Artists')
+              click_link('Artists')
+              expect(current_path).to eq('/artists')
+            end
+  
+            visit "/artists/#{@artist_1.id}/items"
+            within('#navbox') do
+              expect(page).to have_content('Artists')
+              click_link('Artists')
+              expect(current_path).to eq('/artists')
+            end
           end
         end
       end
