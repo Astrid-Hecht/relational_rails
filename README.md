@@ -91,7 +91,7 @@ When I visit any page on the site
 Then I see a link at the top of the page that takes me to the Parent Index
 
 
-User Story 1
+User Story 10
 ---
 [ ] 
 Parent Child Index Link
@@ -129,7 +129,7 @@ a new parent record is created
 and I am redirected to the Parent Index page where I see the new Parent displayed.
 
 
-User Story 1
+User Story 2
 ---
 [ ] 
 Parent Update 
@@ -146,7 +146,7 @@ the parent's info is updated
 and I am redirected to the Parent's Show page where I see the parent's updated info
 
 
-User Story 1
+User Story 3
 ---
 [ ] 
 Parent Child Creation 
@@ -163,7 +163,7 @@ a new child object/row is created for that parent
 and I am redirected to the Parent Childs Index page where I can see the new child listed
 
 
-User Story 1
+User Story 4
 ---
 [ ] 
 Child Update 
@@ -190,7 +190,7 @@ When I visit the child index
 Then I only see records where the boolean column is `true`
 
 
-User Story 1
+User Story 5
 ---
 [ ] 
 Sort Parent's Children in Alphabetical Order by name 
@@ -203,7 +203,7 @@ I'm taken back to the Parent's children Index Page where I see all of the parent
 Usability
 
 
-User Story 1
+User Story 6
 ---
 [ ] 
 Parent Update From Parent Index Page 
@@ -217,7 +217,7 @@ I should be taken to that parent's edit page where I can update its information 
 ---
 [ ] 
 
-User Story 1
+User Story 7
 ---
 [ ] 
 Child Update From Childs Index Page 
@@ -269,7 +269,7 @@ and I am redirected to the child index page where I no longer see this child
 ActiveRecord
 
 
-User Story 2
+User Story 3
 ---
 [ ] 
 Display Records Over a Given Threshold 
@@ -282,7 +282,7 @@ Then I am brought back to the current index page with only the records that meet
 Usability
 
 
-User Story 2
+User Story 4
 ---
 [ ] 
 Parent Delete From Parent Index Page 
@@ -295,7 +295,7 @@ When I click the link
 I am returned to the Parent Index Page where I no longer see that parent
 
 
-User Story 2
+User Story 5
 ---
 [ ] 
 Child Delete From Childs Index Page 

@@ -7,7 +7,7 @@
     </tr>
     <%@artists.sort_by { |artist| artist.created_at }.reverse.each do |artist|%>
     <tr class="artist">
-      <td><h4><%= artist.username %></h4></td> 
+      <td><h4><%= link_to artist.username, "/artists/#{artist.id}" %></h4></td> 
       <td><%= artist.created_at.to_s %></td>
     </tr>
     <%end%>
