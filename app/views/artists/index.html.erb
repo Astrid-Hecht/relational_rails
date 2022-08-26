@@ -1,4 +1,15 @@
 <h1>Artists</h1>
-<%@artists.each do |artist|%>
-  <h3> <%= artist.username %> </h3>
-  <%end%>
+<body>
+  <table id='artist_list'>
+    <tr>
+      <th>Artist</th>
+      <th>Creation time</th>
+    </tr>
+    <%@artists.sort_by { |artist| artist.created_at }.reverse.each do |artist|%>
+    <tr class="artist">
+      <td><h4><%= artist.username %></h4></td> 
+      <td><%= artist.created_at.to_s %></td>
+    </tr>
+    <%end%>
+  </table>
+</body>

@@ -27,6 +27,18 @@ RSpec.describe 'Artists#show' do
         expect(page).to have_content(@artist_1.followers)
         expect(page).to have_content(@artist_1.accepts_returns)
       end
+
+      it "I see a count of the number of children associated with this parent" do 
+        @item_1 = @artist_1.items.create!(name: 'Resin Sparkle Beer Cozy', rating: 2.2, 
+                                          price: 44.95, stock: 100, num_sold: 3, free_shipping: true)
+        @item_2 = @artist_2.items.create!(name: 'Boxer Bowler', rating: 5.0,
+                                          price: 35.01, stock: 5, num_sold: 59, free_shipping: false)
+        visit "/artists/#{@artist_1.id}"
+        within '#shop_breakdown' do
+          save_and_open_page
+          expect(page.all('.item_count')[0]).to have_content(@artist_1.items.count)
+        end
+      end
     end
   end
 end
