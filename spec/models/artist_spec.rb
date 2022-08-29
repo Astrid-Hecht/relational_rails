@@ -5,6 +5,7 @@ RSpec.configure do |config|
 end
 
 RSpec.describe Artist, type: :model do
+  it {should have_many :items}
   before :each do
     @artist_1 = Artist.create!(username: 'UnnecessaryilyResin', location: 'Laramie, Wyoming', followers: 157,
       accepts_returns: false)
@@ -15,7 +16,6 @@ RSpec.describe Artist, type: :model do
     @item_2 = @artist_2.items.create!(name: 'Boxer Bowler', rating: 5.0, price: 35.01,
       stock: 5, num_sold: 59, free_shipping: false)
   end
-  it {should have_many :items}
 
   it 'sorts artist index by most recenetly created' do
     @artists = Artist.recent
