@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/items', to: 'items#index'
   get '/artists', to: 'artists#index'
-  get '/artists/:artist_id/items', to: 'artist_items#index'
+  get '/artists/:id/items', to: 'artist_items#index'
   get '/artists/new', to: 'artists#new'
   post '/artists', to: 'artists#create'
   get '/artists/:id/items/new', to: 'artist_items#new'

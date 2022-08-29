@@ -24,11 +24,12 @@
             <td>Number Sold: <%= item.num_sold %></td>
           </tr>
           <tr>
-            <td>Shipping: <%= item.free_shipping %></td>
+            <td>Free Shipping?: <%= item.free_shipping %></td>
           </tr>
         </table>
         <br><br>
       <%end%>
+      <%= link_to "<button>New Item by Artist</button>".html_safe, "/artists/#{@artist.id}/items/new", :class => 'table_button', :id => 'new_artist_item' %>
     </body>
   </html>
   

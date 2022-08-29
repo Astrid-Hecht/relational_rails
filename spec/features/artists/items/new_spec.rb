@@ -18,21 +18,21 @@ RSpec.describe 'Item creation' do
     describe 'When I visit the Artist Items Index page' do
       describe 'Then I see a link to add a new adoptable child for that parent "Create Child"' do
         before :each do
-          @artist_1 = Artist.create!(username: 'UnnecessaryilyResin', location: 'Laramie, Wyoming', followers: 157,
+          @artist_1 = Artist.create!(username: 'Hummus Scultpures', location: 'Taos, NM', followers: 42,
                                      accepts_returns: false)
         end
 
         it 'visit Artist Items Index' do
           visit "artists/#{@artist_1.id}/items"
 
-          expect(page).to have_button('Create Item')
+          expect(page).to have_button('New Item by Artist')
         end
 
         describe 'When I click the link' do
           it "I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child" do
             visit "/artists/#{@artist_1.id}/items"
 
-            click_link('Create Item')
+            click_link('New Item by Artist')
             expect(current_path).to eq("/artists/#{@artist_1.id}/items/new")
           end
 
@@ -43,19 +43,20 @@ RSpec.describe 'Item creation' do
             expect(page).to have_field('Rating')
             expect(page).to have_field('Price')
             expect(page).to have_field('Stock')
-            expect(page).to have_field('Number Sold')
-            expect(page).to have_selector('Free Shipping')
+            expect(page).to have_field('num_sold')
+            expect(page).to have_selector('#free_shipping_true')
+            expect(page).to have_selector('#free_shipping_false')
           end
 
           it 'can create a new Item and redirects to Item index' do
-            visit '/items/new'
+            visit "/artists/#{@artist_1.id}/items/new"
 
             fill_in('Name', with: 'Tiny Tahini Trombone')
             fill_in('Rating', with: '3.5')
             fill_in('Price', with: '69')
             fill_in('Stock', with: '1')
-            fill_in('Number Sold', with: '0')
-            choose('Yes')
+            fill_in('num_sold', with: '0')
+            choose('Free!')
             click_button('Create Item')
 
             expect(current_path).to eq("/artists/#{@artist_1.id}/items")
@@ -65,7 +66,7 @@ RSpec.describe 'Item creation' do
             expect(page).to have_content('69')
             expect(page).to have_content('1')
             expect(page).to have_content('0')
-            expect(page).to have_content('Free!')
+            expect(page).to have_content('true')
           end
         end
       end

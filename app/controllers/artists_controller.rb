@@ -11,7 +11,7 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    artist = Artist.create!(artist_params)
+    artist = Artist.create(artist_params)
     redirect_to "/artists"
   end
 
