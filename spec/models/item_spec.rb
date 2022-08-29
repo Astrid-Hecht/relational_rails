@@ -19,6 +19,6 @@ RSpec.describe Item, type: :model do
 
   it 'index only selects items with true boolean' do
     items = Item.true_select
-    expect(items).to eq(Item.where(free_shipping: :true))
+    expect(items).to eq(Item.where(free_shipping: true))
   end
 end
