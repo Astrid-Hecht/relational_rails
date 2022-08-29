@@ -38,4 +38,18 @@ RSpec.describe 'Artists items index' do
     click_link("#{@item_2.name}")
     expect(current_path).to eq("/items/#{@item_2.id}")
   end
+
+  it 'every item has an update button that takes you to edit page when clicked' do
+    @item_3 = @artist_2.items.create!(name: 'Borzoi Baseball', rating: 4.7, price: 25.01,
+      stock: 10, num_sold: 9, free_shipping: true)
+
+    visit "/artists/#{@artist_2.id}/items"
+
+    expect(page.all('.item')[0]).to have_button('Edit Item')
+    expect(page.all('.item')[1]).to have_button('Edit Item')
+    within(page.all('.item')[0]) do
+      click_link('Edit Item')
+    end
+    expect(current_path).to eq("/items/#{@item_2.id}/edit")
+  end
 end
