@@ -18,7 +18,7 @@ RSpec.describe 'Item#index' do
         @item_1 = Item.create!(name: 'Resin Sparkle Beer Cozy', rating: 2.2, price: 44.95,
                                stock: 100, num_sold: 3, free_shipping: true,  artist_id: @artist_1.id)
         @item_2 = Item.create!(name: 'Boxer Bowler', rating: 5.0, price: 35.01,
-                               stock: 5, num_sold: 59, free_shipping: false, artist_id: @artist_2.id)
+                               stock: 5, num_sold: 59, free_shipping: true, artist_id: @artist_2.id)
 
         visit '/items'
       end
@@ -44,6 +44,16 @@ RSpec.describe 'Item#index' do
         else
           expect(page).to have_content('Paid')
         end
+      end
+
+      it 'every item has an update button that takes you to edit page when clicked' do
+        expect(page).to have_button('Edit Item')
+        expect(page.all('.item')[0]).to have_button('Edit Item')
+        expect(page.all('.item')[1]).to have_button('Edit Item')
+        within(page.all('.item')[0]) do
+          click_link('Edit Item')
+        end
+        expect(current_path).to eq("/items/#{@item_1.id}/edit")
       end
     end
   end
