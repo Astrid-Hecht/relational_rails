@@ -53,7 +53,7 @@ RSpec.describe 'Item creation' do
 
             fill_in('Name', with: 'Tiny Tahini Trombone')
             fill_in('Rating', with: '3.5')
-            fill_in('Price', with: '69')
+            fill_in('Price', with: '69.99')
             fill_in('Stock', with: '1')
             fill_in('num_sold', with: '0')
             choose('Free!')
@@ -63,10 +63,10 @@ RSpec.describe 'Item creation' do
             expect(page).to have_content('Hummus Scultpures')
             expect(page).to have_content('Tiny Tahini Trombone')
             expect(page).to have_content('3.5')
-            expect(page).to have_content('69')
+            expect(page).to have_content('69.99')
             expect(page).to have_content('1')
             expect(page).to have_content('0')
-            expect(page).to have_content('true')
+            expect(page).to have_content('Free!')
           end
         end
       end

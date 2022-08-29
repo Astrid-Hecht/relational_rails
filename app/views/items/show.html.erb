@@ -9,12 +9,13 @@
       
         <% x = 'Paid' %>
         <% x = 'Free!' if @item.free_shipping %>
+        <%width =(((@item.rating / 5)*100).floor)%>
         <table>
           <tr>
             <th><h3> <%= @item.name %> </h3></th>
           </tr>
           <tr>
-            <td>Rating: <%= @item.rating %> stars</td>
+            <td>Rating: <span class='box'></span><span class='rating_box' style='width:<%=width%>px'></span> <%= @item.rating %> stars</td>
           </tr>
           <tr>
             <td>Price: $<%= @item.price %></td>
@@ -30,7 +31,8 @@
           </tr>
         </table>
         <br><br>
-      
+      <%= link_to "<button>Update Item</button>".html_safe, "/items/#{@item.id}/edit", :class => 'table_button', :id => 'update_item' %>
+
     </body>
   </html>
   

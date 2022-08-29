@@ -12,7 +12,7 @@
         <%width =(((item.rating / 5)*100).floor)%>
         <table>
           <tr>
-            <th><h3> <%= item.name %> </h3></th>
+            <th><h3> <%= link_to item.name, "/items/#{item.id}" %> </h3></th>
           </tr>
           <tr>
             <td>Rating: <span class='box'></span><span class='rating_box' style='width:<%=width%>px'></span> <%= item.rating %> stars</td>

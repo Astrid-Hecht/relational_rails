@@ -133,7 +133,7 @@ Iteration 1 will be reviewed at your second check-in
 ```
 User Story 11
 ---
-[ ] 
+[X] 
 Parent Creation 
 
 As a visitor
@@ -153,7 +153,7 @@ and I am redirected to the Parent Index page where I see the new Parent displaye
 
 User Story 12
 ---
-[ ] 
+[X] 
 Parent Update 
 
 As a visitor
@@ -173,7 +173,7 @@ and I am redirected to the Parent's Show page where I see the parent's updated i
 
 User Story 13
 ---
-[ ] 
+[X] 
 Parent Child Creation 
 
 As a visitor
@@ -193,7 +193,7 @@ and I am redirected to the Parent Childs Index page where I can see the new chil
 
 User Story 14
 ---
-[ ] 
+[X] 
 Child Update 
 
 As a visitor
@@ -205,7 +205,6 @@ When I click the button to submit the form "Update Child"
 Then a `PATCH` request is sent to '/child_table_name/:id'
 the child's data is updated
 and I am redirected to the Child Show page where I see the Child's updated information
-ActiveRecord
 
 ```
 
