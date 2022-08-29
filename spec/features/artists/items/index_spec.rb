@@ -25,7 +25,7 @@ RSpec.describe 'Artists items index' do
     expect(page).to have_content(@item_2.price)
     expect(page).to have_content(@item_2.stock)
     expect(page).to have_content(@item_2.num_sold)
-    expect(page).to have_content(@item_2.free_shipping)
+    expect(page).to have_content('Paid')
   end
 
   it 'and nothing from a different artist' do
