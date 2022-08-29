@@ -4,11 +4,13 @@
     <tr>
       <th>Artist</th>
       <th>Creation time</th>
+      <th>Edit</th>
     </tr>
     <% @artists.each do |artist|%>
     <tr class="artist">
       <td><h4><%= link_to artist.username, "/artists/#{artist.id}" %></h4></td> 
       <td><%= artist.created_at.to_s %></td>
+      <td><%= link_to "<button>Edit Artist</button>".html_safe, "/artists/#{artist.id}/edit", :class => 'table_button', :id => 'edit_artist' %></td>
     </tr>
     <%end%>     
   </table>

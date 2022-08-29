@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/items', to: 'items#index'
   get '/artists', to: 'artists#index'
   get '/artists/:id/items', to: 'artist_items#index'
+  get '/artists/:id/items/sort', to: 'artist_items#sorted_index'
   get '/artists/new', to: 'artists#new'
   post '/artists', to: 'artists#create'
   get '/artists/:id/edit', to: 'artists#edit'
