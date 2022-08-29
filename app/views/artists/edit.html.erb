@@ -1,0 +1,22 @@
+<h1>Update Artist</h1>
+
+<section>
+<%= form_with class: 'create_form', url: "/artists/#{@artist.id}", method: :patch, local: true do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+  <br><br>
+  <%= form.label :location %>
+  <%= form.text_field :location %>
+  <br><br>
+  <%= form.label :followers %>
+  <%= form.text_field :followers %>
+  <br><br>
+  <%= form.label :accepts_returns?%> <br>
+  <%= form.radio_button :accepts_returns, true %>
+  <%= form.label :accepts_returns, 'Yes', :value => true %>
+  <%= form.radio_button :accepts_returns, false %>
+  <%= form.label :accepts_returns, 'No', :value => false %>
+  <br><br>
+  <%= form.submit "Update Artist" %>
+<% end %>
+</section>

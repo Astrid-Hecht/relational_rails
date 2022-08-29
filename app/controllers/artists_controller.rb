@@ -22,7 +22,7 @@ class ArtistsController < ApplicationController
   def update
     artist = Artist.find(params[:id])
     artist.update(artist_params)
-    redirect_to '/artists'
+    redirect_to "/artists/#{artist.id}"
   end
 
   def destroy

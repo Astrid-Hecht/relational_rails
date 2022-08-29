@@ -11,31 +11,33 @@
 # the parent's info is updated
 # and I am redirected to the Parent's Show page where I see the parent's updated info
 
+require 'rails_helper'
+
 RSpec.describe 'Artist update' do
   describe 'As a visitor' do
     describe 'When I visit the Parent show page' do
       describe 'Then I see a link to update Parent record "Update Parent"' do
         before :each do
-          @artist_1 = Artist.create!(username: 'Hummus Scultpures', location: 'Taos, NM', followers: 42,
+          @artist_1 = Artist.create(username: 'Hummus Scultpures', location: 'Taos, NM', followers: 42,
                                      accepts_returns: false)
         end
 
         it "visit '/artists/:id'" do
-          visit "/artists/#{@parent_1.id}"
+          visit "/artists/#{@artist_1.id}"
 
           expect(page).to have_button('Update Artist')
         end
 
         describe 'When I click this link' do
-          it "links to the new page from the artists index Then I am taken to '/parents/new'" do
-            visit '/artists'
+          it "links to the new page from the artists index Then I am taken to '/parents/:id/edit'" do
+            visit "/artists/#{@artist_1.id}"
 
             click_link('Update Artist')
-            expect(current_path).to eq("/artists/#{@parent_1.id}/edit")
+            expect(current_path).to eq("/artists/#{@artist_1.id}/edit")
           end
 
           it 'where I see a form to edit parent record' do
-            visit "/artists/#{@parent_1.id}/edit"
+            visit "/artists/#{@artist_1.id}/edit"
 
             expect(page).to have_field('Username')
             expect(page).to have_field('Location')
@@ -51,7 +53,7 @@ RSpec.describe 'Artist update' do
           # and I am redirected to the Parent Index page where I see the new Parent displayed.
 
           it 'can update an artist and redirects to artist show' do
-            visit "/artists/#{@parent_1.id}/edit"
+            visit "/artists/#{@artist_1.id}/edit"
 
             fill_in('Username', with: 'Hummus Creations')
             fill_in('Location', with: 'Taos, New Mexico')
@@ -59,11 +61,11 @@ RSpec.describe 'Artist update' do
             choose('Yes')
             click_button('Update Artist')
 
-            expect(current_path).to eq("/artists/#{@parent_1.id}")
+            expect(current_path).to eq("/artists/#{@artist_1.id}")
           end
 
           it 'saves entered info' do
-            visit "/artists/#{@parent_1.id}/edit"
+            visit "/artists/#{@artist_1.id}/edit"
 
             fill_in('Username', with: 'Hummus Creations')
             fill_in('Location', with: 'Taos, New Mexico')
