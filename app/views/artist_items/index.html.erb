@@ -6,11 +6,13 @@
     </head>
     <body>
       <h1>Items from <%= @artist.username %>!</h1>
+      <%= link_to "<button>Sort Alphabetically</button>".html_safe, "/artists/#{@artist.id}/items/sort", :class => 'table_button', :id => 'sort' %>
+      <br><br>
       <%@items.each do |item|%>
       <% x = 'Paid' %>
       <% x = 'Free!' if item.free_shipping %>
       <%width =(((item.rating / 5)*100).floor)%>
-        <table>
+        <table class='item'>
           <tr>
             <th><h3> <%= link_to item.name, "/items/#{item.id}" %> </h3></th>
           </tr>
@@ -29,6 +31,7 @@
           <tr>
             <td>Shipping: <%= x %></td>
           </tr>
+          <%= link_to "<button>Edit Item</button>".html_safe, "/items/#{item.id}/edit", :class => 'table_button', :id => 'edit_item' %>
         </table>
         <br><br>
       <%end%>
