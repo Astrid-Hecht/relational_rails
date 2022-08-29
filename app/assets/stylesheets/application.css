@@ -32,6 +32,7 @@ article {
 }
 
 #title {
+  color: rgb(227, 137, 33);
   float: left;
   padding-left:10px; 
   font-family: 'Times New Roman', Times, serif;
@@ -92,4 +93,14 @@ a:hover {
 #shop_button {
   margin: 20px;
 }
-
+.box {
+  vertical-align: bottom;
+  display: inline-block;
+  height: 19px;
+}
+.rating_box {
+  vertical-align: bottom;
+  display: inline-block;
+  height: 19px;
+  background-image: url('stars.png');
+}
