@@ -90,7 +90,7 @@ a:hover {
     ) 1 100%
 }
 
-#shop_button {
+.table_button {
   margin: 20px;
 }
 .box {
@@ -103,4 +103,8 @@ a:hover {
   display: inline-block;
   height: 19px;
   background-image: url('stars.png');
+}
+
+.create_form {
+  width: 200px;
 }

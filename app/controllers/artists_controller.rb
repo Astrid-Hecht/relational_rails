@@ -11,7 +11,7 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    artist = Artist.create(artist_params)
+    artist = Artist.create!(artist_params)
     redirect_to "/artists"
   end
 
@@ -33,6 +33,6 @@ class ArtistsController < ApplicationController
 
 private
   def artist_params
-    params.permit(:name)
+    params.permit(:username, :location, :followers, :accepts_returns)
   end
 end

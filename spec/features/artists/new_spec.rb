@@ -38,7 +38,8 @@ RSpec.describe 'Artist creation' do
             expect(page).to have_field('Username')
             expect(page).to have_field('Location')
             expect(page).to have_field('Followers')
-            expect(page).to have_select('Return Policy')
+            expect(page).to have_selector('#accepts_returns_true')
+            expect(page).to have_selector('#accepts_returns_false')
           end
 
           # When I fill out the form with a new parent's attributes:
@@ -53,14 +54,24 @@ RSpec.describe 'Artist creation' do
             fill_in('Username', with: 'Hummus Scultpures')
             fill_in('Location', with: 'Taos, NM')
             fill_in('Followers', with: '42')
-            choose('False')
+            choose('No')
+            click_button('Create Artist')
+          end
+
+          it 'saves entered info' do
+            visit '/artists/new'
+
+            fill_in('Username', with: 'Hummus Scultpures')
+            fill_in('Location', with: 'Taos, NM')
+            fill_in('Followers', with: '42')
+            choose('No')
             click_button('Create Artist')
 
-            expect(current_path).to eq('/artists')
+            click_link("Hummus Scultpures")
             expect(page).to have_content('Hummus Scultpures')
             expect(page).to have_content('Taos, NM')
             expect(page).to have_content('42')
-            expect(page).to have_content('False')
+            expect(page).to have_content('false')
           end
         end
       end

@@ -44,14 +44,8 @@ RSpec.describe 'Item creation' do
             expect(page).to have_field('Price')
             expect(page).to have_field('Stock')
             expect(page).to have_field('Number Sold')
-            expect(page).to have_select('Free Shipping')
+            expect(page).to have_selector('Free Shipping')
           end
-
-          # When I fill out the form with a new parent's attributes:
-          # And I click the button "Create Parent" to submit the form
-          # Then a `POST` request is sent to the '/parents' route
-          # a new parent record is created
-          # and I am redirected to the Parent Index page where I see the new Parent displayed.
 
           it 'can create a new Item and redirects to Item index' do
             visit '/items/new'
