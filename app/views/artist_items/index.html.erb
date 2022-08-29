@@ -7,12 +7,15 @@
     <body>
       <h1>Items from <%= @artist.username %>!</h1>
       <%@items.each do |item|%>
+      <% x = 'Paid' %>
+      <% x = 'Free!' if item.free_shipping %>
+      <%width =(((item.rating / 5)*100).floor)%>
         <table>
           <tr>
             <th><h3> <%= link_to item.name, "/items/#{item.id}" %> </h3></th>
           </tr>
           <tr>
-            <td>Rating: <%= item.rating %> stars</td>
+            <td>Rating: <span class='box'></span><span class='rating_box' style='width:<%=width%>px'></span> <%= item.rating %> stars</td>
           </tr>
           <tr>
             <td>Price: $<%= item.price %></td>
@@ -24,11 +27,12 @@
             <td>Number Sold: <%= item.num_sold %></td>
           </tr>
           <tr>
-            <td>Shipping: <%= item.free_shipping %></td>
+            <td>Shipping: <%= x %></td>
           </tr>
         </table>
         <br><br>
       <%end%>
+      <%= link_to "<button>New Item by Artist</button>".html_safe, "/artists/#{@artist.id}/items/new", :class => 'table_button', :id => 'new_artist_item' %>
     </body>
   </html>
   

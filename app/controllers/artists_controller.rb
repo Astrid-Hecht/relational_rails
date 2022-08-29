@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = Artist.recent
   end
 
   def show
@@ -22,7 +22,7 @@ class ArtistsController < ApplicationController
   def update
     artist = Artist.find(params[:id])
     artist.update(artist_params)
-    redirect_to '/artists'
+    redirect_to "/artists/#{artist.id}"
   end
 
   def destroy
@@ -33,6 +33,6 @@ class ArtistsController < ApplicationController
 
 private
   def artist_params
-    params.permit(:name)
+    params.permit(:username, :location, :followers, :accepts_returns)
   end
 end

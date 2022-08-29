@@ -9,17 +9,19 @@
             <td>Location: <%= @artist.location %></td>
           </tr>
           <tr>
-            <td>Followers: $<%= @artist.followers %></td>
+            <td>Followers: <%= @artist.followers %></td>
           </tr>
           <tr>
-            <td class='item_count'>No of Items: <%= @artist.items.count %></td>
+            <td class='item_count'>No of Items: <%= @artist.tot_stock %></td>
           </tr>
           <tr>
-            <td>Return Policy: <%= @artist.accepts_returns %></td>
+            <td>Accepts Returns?: <%= @artist.accepts_returns %></td>
           </tr>
         </table>
         <br>
-        <%= link_to "<button>Artist's shop</button>".html_safe, "/artists/#{@artist.id}/items", :id => 'shop_button' %>
+        <%= link_to "<button>Update Artist</button>".html_safe, "/artists/#{@artist.id}/edit", :class => 'table_button', :id => 'shop_button' %>
+        <br><br>
+        <%= link_to "<button>Artist's shop</button>".html_safe, "/artists/#{@artist.id}/items", :class => 'table_button', :id => 'shop_button' %>
         <br><br>
       
     </body>

@@ -1,0 +1,28 @@
+<h1>Add New Item to <%=@artist.username%>'s Catalogue</h1>
+
+<section>
+<%= form_with class: 'create_form', url: "/artists/#{@artist.id}/items", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br><br>
+  <%= form.label :rating %>
+  <%= form.text_field :rating %>
+  <br><br>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  <br><br>
+  <%= form.label :stock %>
+  <%= form.text_field :stock %>
+  <br><br>
+  <%= form.label :num_sold %>
+  <%= form.text_field :num_sold %>
+  <br><br>
+  <%= form.label :shipping_cost%> <br>
+  <%= form.radio_button :free_shipping, true %>
+  <%= form.label :free_shipping, 'Free!', :value => true %>
+  <%= form.radio_button :free_shipping, false %>
+  <%= form.label :free_shipping, 'GMS Ground', :value => false %>
+  <br><br>
+  <%= form.submit "Create Item" %>
+<% end %>
+</section>
