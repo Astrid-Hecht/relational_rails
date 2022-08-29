@@ -4,6 +4,11 @@ class ArtistItemsController < ApplicationController
     @items = @artist.items
   end
 
+  def sorted_index
+    @artist = Artist.find(params[:id])
+    @items = @artist.items.order(:name)
+  end
+
   def new
     @artist = Artist.find(params[:id])
   end
