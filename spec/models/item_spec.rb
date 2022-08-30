@@ -21,4 +21,10 @@ RSpec.describe Item, type: :model do
     items = Item.true_select
     expect(items).to eq(Item.where(free_shipping: true))
   end
+
+  it 'can order alphabetically' do
+    items = Item.all
+    expect(items.ordered).to eq([@item_2, @item_1])
+  end
+
 end

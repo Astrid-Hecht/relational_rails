@@ -23,7 +23,7 @@ RSpec.describe 'Artist delete' do
           @item_1 = @artist_1.items.create!(name: 'Resin Sparkle Beer Cozy', rating: 2.2, price: 44.95,
                                             stock: 100, num_sold: 3, free_shipping: true)
           @item_2 = @artist_2.items.create!(name: 'Boxer Bowler', rating: 5.0, price: 35.01,
-                                            stock: 5, num_sold: 59, free_shipping: false)
+                                            stock: 5, num_sold: 59, free_shipping: true)
         end
 
         it "visit '/artists/:id'" do
@@ -32,35 +32,34 @@ RSpec.describe 'Artist delete' do
           expect(page).to have_button('Delete Artist')
         end
 
-        describe 'When I click this link' do
+        describe 'When I click the button' do
           it "links to the new page from the artists index Then I am taken to '/parents'" do
             visit "/artists/#{@artist_1.id}"
 
-            click_link('Delete Artist')
+            click_button('Delete Artist')
             expect(current_path).to eq("/artists")
           end
 
           it 'where I see the parent is deleted' do
             visit "/artists/#{@artist_1.id}"
 
-            click_link('Delete Artist')
+            click_button('Delete Artist')
             visit "/artists"
 
-            expect(page).to not_have_content(@artist_1.username)
+            expect(page).to_not have_content(@artist_1.username)
           end
 
           it 'and all child records are deleted' do
             visit "/artists/#{@artist_1.id}"
 
-            click_link('Delete Artist')
+            click_button('Delete Artist')
             visit "/items"
-
-            expect(page).to not_have_content(@item_1.rating)
-            expect(page).to not_have_content(@item_1.rating)
-            expect(page).to not_have_content(@item_1.price)
-            expect(page).to not_have_content(@item_1.stock)
-            expect(page).to not_have_content(@item_1.num_sold)
-            expect(page).to have_content(@item_2.rating)
+            
+            expect(page).to_not have_content(@item_1.rating)
+            expect(page).to_not have_content(@item_1.rating)
+            expect(page).to_not have_content(@item_1.price)
+            expect(page).to_not have_content(@item_1.stock)
+            expect(page).to_not have_content("Number Sold: #{@item_1.num_sold}")
             expect(page).to have_content(@item_2.rating)
             expect(page).to have_content(@item_2.price)
             expect(page).to have_content(@item_2.stock)

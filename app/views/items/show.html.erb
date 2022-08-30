@@ -32,7 +32,7 @@
         </table>
         <br><br>
       <%= link_to "<button>Update Item</button>".html_safe, "/items/#{@item.id}/edit", :class => 'table_button', :id => 'update_item' %>
-
+      <%= button_to "Delete Item", "/items/#{@item.id}", method: :delete %>
     </body>
   </html>
   

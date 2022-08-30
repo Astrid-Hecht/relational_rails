@@ -30,11 +30,7 @@ RSpec.describe 'items#show' do
         expect(page).to have_content(@item_1.price)
         expect(page).to have_content(@item_1.stock)
         expect(page).to have_content(@item_1.num_sold)
-        if @item_1.free_shipping
-          expect(page).to have_content('Free!')
-        else
-          expect(page).to have_content('Paid')
-        end
+        expect(page).to have_content('Free!')
       end
     end
   end

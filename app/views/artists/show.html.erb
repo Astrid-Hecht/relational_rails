@@ -19,9 +19,10 @@
           </tr>
         </table>
         <br>
-        <%= link_to "<button>Update Artist</button>".html_safe, "/artists/#{@artist.id}/edit", :class => 'table_button', :id => 'shop_button' %>
+        <%= link_to "<button>Update Artist</button>".html_safe, "/artists/#{@artist.id}/edit", :class => 'table_button'%>
+        <%= button_to "Delete Artist", "/artists/#{@artist.id}", method: :delete , :class => 'table_button' %>
         <br><br>
-        <%= link_to "<button>Artist's shop</button>".html_safe, "/artists/#{@artist.id}/items", :class => 'table_button', :id => 'shop_button' %>
+        <%= link_to "<button>Artist's shop</button>".html_safe, "/artists/#{@artist.id}/items", :class => 'table_button'%>
         <br><br>
       
     </body>

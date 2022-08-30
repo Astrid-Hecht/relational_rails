@@ -52,4 +52,15 @@ RSpec.describe 'Artists items index' do
     end
     expect(current_path).to eq("/items/#{@item_2.id}/edit")
   end
+
+  it 'items can be sorted alphabtically' do
+    @item_3 = @artist_2.items.create!(name: 'zoBorzoi Baseball', rating: 4.7, price: 25.01,
+      stock: 10, num_sold: 9, free_shipping: true)
+      
+    visit "/artists/#{@artist_2.id}/items" 
+
+    click_button('Sort Alphabetically')
+    expect(page.all('.item')[0]).to have_content(@item_2.name)
+    expect(page.all('.item')[1]).to have_content(@item_3.name)
+  end
 end
