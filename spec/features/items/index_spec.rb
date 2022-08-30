@@ -19,6 +19,8 @@ RSpec.describe 'Item#index' do
                                stock: 100, num_sold: 3, free_shipping: true,  artist_id: @artist_1.id)
         @item_2 = Item.create!(name: 'Boxer Bowler', rating: 5.0, price: 35.01,
                                stock: 5, num_sold: 59, free_shipping: true, artist_id: @artist_2.id)
+        @item_3 = Item.create!(name: 'Secret paid shipping tester', rating: 5.0, price: 35.01,
+                               stock: 5, num_sold: 59, free_shipping: false, artist_id: @artist_2.id)
 
         visit '/items'
       end
@@ -34,16 +36,8 @@ RSpec.describe 'Item#index' do
         expect(page).to have_content(@item_2.stock)
         expect(page).to have_content(@item_1.num_sold)
         expect(page).to have_content(@item_2.num_sold)
-        if @item_1.free_shipping
-          expect(page).to have_content('Free!')
-        else
-          expect(page).to have_content('Paid')
-        end
-        if @item_2.free_shipping
-          expect(page).to have_content('Free!')
-        else
-          expect(page).to have_content('Paid')
-        end
+        expect(page.find_by_id("#{@item_1.name}")).to have_content('Free!')
+        expect(page.find_by_id("#{@item_2.name}")).to have_content('Free!')
       end
 
       it 'every item has an update button that takes you to edit page when clicked' do

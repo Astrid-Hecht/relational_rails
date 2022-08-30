@@ -10,7 +10,7 @@
         <% x = 'Paid' %>
         <% x = 'Free!' if item.free_shipping %>
         <%width =(((item.rating / 5)*100).floor)%>
-        <table class='item'>
+        <table class='item' id="<%=item.name%>">
           <tr>
             <th><h3> <%= link_to item.name, "/items/#{item.id}" %> </h3></th>
           </tr>

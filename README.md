@@ -307,9 +307,10 @@ When I click the link
 Then a 'DELETE' request is sent to '/child_table_name/:id'
 the child is deleted
 and I am redirected to the child index page where I no longer see this child
-ActiveRecord
+
 
 ```
+### ActiveRecord
 ```
 
 User Story 21
@@ -322,9 +323,10 @@ When I visit the Parent's children Index Page
 I see a form that allows me to input a number value
 When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
 Then I am brought back to the current index page with only the records that meet that threshold shown.
-Usability
+
 
 ```
+### Usability
 ```
 
 User Story 22

@@ -8,4 +8,8 @@ class Item < ApplicationRecord
   def self.ordered
     self.order(:name)
   end
+
+  def self.min_rating(num)
+    self.where('rating >= ?', num)
+  end
 end

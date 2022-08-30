@@ -27,7 +27,10 @@ class ArtistsController < ApplicationController
 
   def destroy
     artist = Artist.find(params[:id])
+    items = artist.items
+    items.each(&:destroy)
     artist.destroy
+
     redirect_to '/artists'
   end
 
