@@ -57,6 +57,16 @@ RSpec.describe 'Artists#index', type: :feature do
         end
         expect(current_path).to eq("/artists/#{@artist_2.id}/edit")
       end
+
+      it 'every artist has an delete button that deletes artist when clicked' do
+        expect(page.all('.artist')[0]).to have_button('Delete Artist')
+        expect(page.all('.artist')[1]).to have_button('Delete Artist') 
+        within(page.all('.artist')[0]) do
+          click_button('Delete Artist')
+        end
+        refresh
+        expect(page).to_not have_content(@artist_2.username)
+      end
     end
   end
 end
