@@ -2,8 +2,12 @@ class ArtistItemsController < ApplicationController
   def index
     @artist = Artist.find(params[:id])
     @items = @artist.items
-    if params[:sort_by] == 'name'
-      @items = @artist.items.ordered
+    if params[:sort_by] == 'name' && params[:rating_search]
+      @items = @items.min_rating(params[:rating_search]).ordered
+    elsif params[:sort_by] == 'name'
+      @items = @items.ordered
+    elsif params[:rating_search]
+      @items = @items.min_rating(params[:rating_search])
     end
   end
 

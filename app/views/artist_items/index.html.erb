@@ -7,7 +7,13 @@
     <body>
       <h1>Items from <%= @artist.username %>!</h1>
       <%= link_to "<button>Sort Alphabetically</button>".html_safe, sort_by: :name, :id => "#{@artist.id}" %>
-      <br><br>
+      <br>
+      <%= form_with url: request.path, method: :get, local: true do |form| %>
+        <%= form.label :rating_search, 'Min Rating:'%>
+        <%= form.text_field :rating_search %>
+        <%= link_to "<button>Search</button>".html_safe, rating_search: :rating_search, :id => "#{@artist.id}" %>
+      <%end%>
+      <br>
       <%@items.each do |item|%>
       <% x = 'Paid' %>
       <% x = 'Free!' if item.free_shipping %>
