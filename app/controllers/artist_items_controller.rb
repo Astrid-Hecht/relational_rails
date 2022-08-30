@@ -19,6 +19,6 @@ class ArtistItemsController < ApplicationController
 
   private
   def artist_item_params
-    params.permit(:name, :rating, :price, :stock, :num_sold, :free_shipping, :artist_id, :order)
+    params.permit(:name, :rating, :price, :stock, :num_sold, :free_shipping, :artist_id)
   end
 end
