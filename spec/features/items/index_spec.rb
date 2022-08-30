@@ -49,6 +49,19 @@ RSpec.describe 'Item#index' do
         end
         expect(current_path).to eq("/items/#{@item_1.id}/edit")
       end
+
+      it 'every item has an delete button that deletes item when clicked' do
+        expect(page).to have_content(@item_1.name)
+        expect(page).to have_content(@item_2.name)
+        expect(page.all('.item')[0]).to have_button('Delete Item')
+        expect(page.all('.item')[1]).to have_button('Delete Item') 
+        within(page.all('.item')[0]) do
+          click_button('Delete Item')
+        end
+        refresh
+        expect(page).to_not have_content(@item_1.name)
+        expect(page).to have_content(@item_2.name)
+      end
     end
   end
 end
