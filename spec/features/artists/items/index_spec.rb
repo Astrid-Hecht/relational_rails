@@ -63,4 +63,24 @@ RSpec.describe 'Artists items index' do
     expect(page.all('.item')[0]).to have_content(@item_2.name)
     expect(page.all('.item')[1]).to have_content(@item_3.name)
   end
+
+  it 'can be searched for items with given parameter over a certain value' do
+    @item_3 = @artist_2.items.create!(name: 'Borzoi Baseball', rating: 1.7, price: 25.01,
+      stock: 10, num_sold: 9, free_shipping: true)
+
+    expect(page).to have_field('Min Rating')
+    expect(page).to have_button('Search')
+    fill_in('Min Rating', with: '2.0')
+    click_button('Search')
+    refresh
+    expect(page.all('.item').count).to eq(1)
+    expect(page).to have_content(@item_2.name)
+    expect(page).to have_content(@item_2.rating)
+    expect(page).to have_content(@item_2.price)
+    expect(page).to_not have_content(@item_3.name)
+    expect(page).to_not have_content(@item_3.rating)
+    expect(page).to_not have_content(@item_3.price)
+
+
+  end
 end
