@@ -2,11 +2,9 @@ class ArtistItemsController < ApplicationController
   def index
     @artist = Artist.find(params[:id])
     @items = @artist.items
-  end
-
-  def sorted_index
-    @artist = Artist.find(params[:id])
-    @items = @artist.items.order(:name)
+    if params[:sort_by] == 'name'
+      @items = @artist.items.ordered
+    end
   end
 
   def new
@@ -21,6 +19,6 @@ class ArtistItemsController < ApplicationController
 
   private
   def artist_item_params
-    params.permit(:name, :rating, :price, :stock, :num_sold, :free_shipping, :artist_id)
+    params.permit(:name, :rating, :price, :stock, :num_sold, :free_shipping, :artist_id, :order)
   end
 end

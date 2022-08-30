@@ -6,7 +6,7 @@
     </head>
     <body>
       <h1>Items from <%= @artist.username %>!</h1>
-      <%= link_to "<button>Sort Alphabetically</button>".html_safe, "/artists/#{@artist.id}/items/sort", :class => 'table_button', :id => 'sort' %>
+      <%= link_to "<button>Sort Alphabetically</button>".html_safe, sort_by: :name, :id => "#{@artist.id}" %>
       <br><br>
       <%@items.each do |item|%>
       <% x = 'Paid' %>
